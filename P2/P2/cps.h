@@ -23,15 +23,17 @@ public:
         height = _height;
     }
     
+    // Bounding box is centered around the current coordinates.
     void drawBoundingBox(int _x, int _y){
+        
         
     }
     
-private:
+protected:
     int width;
     int height;
-    int cor_x; // current point x coordinates;
-    int cor_y; // current point y coordinates;
+    int cor_x; // current point x coordinates.
+    int cor_y; // current point y coordinates.
     
 };
 
@@ -39,12 +41,27 @@ private:
 
 // Derived class
 class Circle: public Shape{
-    
-    
+    double radius = 0.5 * width;
     
 };
 
 class Polygon: public Shape{
+    
+    
+//    Case 1: n is odd.
+//    height = e(1+cos(π/n))/(2sin(π/n))
+//    width = (e sin(π(n-1)/2n))/(sin(π/n))
+//
+//    Case 2: n is divisible by 4.
+//    height = e(cos(π/n))/(sin(π/n))
+//    width = (e cos(π/n))/(sin(π/n))
+//
+//    Case 3: n is divisible by 2, but not by 4.
+//    height = e(cos(π/n))/(sin(π/n))
+//    width = e/(sin(π/n))
+    
+    
+    
 };
 
 class Rectangle: public Shape{

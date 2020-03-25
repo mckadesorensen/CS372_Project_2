@@ -17,11 +17,14 @@ using std::string;
 
 
 // *****************
-// Test Cases 
+// Test Cases (in progress)
 // *****************
 
-TEST_CASE("TEST 1: ")
+TEST_CASE("TEST 1: shape objects")
 {
-    
-    
+    SECTION("Circle")
+    {
+    INFO("");
+    REQUIRE();
+    }
 }
