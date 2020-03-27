@@ -10,61 +10,111 @@
 #define cps_h
 
 #include <iostream>
+#include <string>
+#include <math.h>
 
 // A shape language that allows basic shapes such as squares, circles, and polygons to be defined, rotated and scaled versions, and aggregate shapes.
 
 class Shape{
+
 public:
-    void getWidth(int _width){
-        width = _width;
+    Shape(){};
+    virtual ~Shape(){};
+    
+    
+    virtual void setWidth(double width){
+        _width = width;
     }
     
-    void getHeight(int _height){
-        height = _height;
+    virtual void setHeight(double height){
+           _height = height;
+       }
+    
+    void setCoor(double x, double y){
+        _x = x;
+        _y = y;
     }
     
-    // Bounding box is centered around the current coordinates.
-    void drawBoundingBox(int _x, int _y){
-        
-        
+    const double getWidth(){
+        return _width;
+    }
+    const double getHeight(){
+        return _height;
     }
     
-protected:
-    int width;
-    int height;
-    int cor_x; // current point x coordinates.
-    int cor_y; // current point y coordinates.
+    
+private:
+    double _width;
+    double _height;
+    double _x; // current point x coordinates.
+    double _y; // current point y coordinates.
     
 };
-
-
 
 // Derived class
 class Circle: public Shape{
-    double radius = 0.5 * width;
+public:
     
+    Circle(double radius)
+    : _radius(radius)
+    {}
+    
+    void setWidth() {
+        Shape::setWidth(2 * _radius);
+    }
+    void setHeight() {
+           Shape::setHeight(2 * _radius);
+    }
+    double _radius;
 };
 
 class Polygon: public Shape{
+public:
     
-    
-//    Case 1: n is odd.
-//    height = e(1+cos(π/n))/(2sin(π/n))
-//    width = (e sin(π(n-1)/2n))/(sin(π/n))
-//
-//    Case 2: n is divisible by 4.
-//    height = e(cos(π/n))/(sin(π/n))
-//    width = (e cos(π/n))/(sin(π/n))
-//
-//    Case 3: n is divisible by 2, but not by 4.
-//    height = e(cos(π/n))/(sin(π/n))
-//    width = e/(sin(π/n))
+    Polygon(int numSides, double sideLength)
+    : _numSides(numSides),
+      _sideLength(sideLength)
+    {}
+
+    int _numSides;
+    double _sideLength;
     
     
     
+    //    Case 1: n is odd.
+    //    height = e(1+cos(π/n))/(2sin(π/n))
+    //    width = (e sin(π(n-1)/2n))/(sin(π/n))
+    //
+    //    Case 2: n is divisible by 4.
+    //    height = e(cos(π/n))/(sin(π/n))
+    //    width = (e cos(π/n))/(sin(π/n))
+    //
+    //    Case 3: n is divisible by 2, but not by 4.
+    //    height = e(cos(π/n))/(sin(π/n))
+    //    width = e/(sin(π/n))
+
+    void setHeight(){
+        
+        if (_numSides % 2 != 0){
+        Shape::setHeight(
+        
+        M_E * (1+cos(M_PI/_numSides))/
+        (2 * sin(M_PI/_numSides)));
+            
+        }
+        else if(_numSides % 4 == 0){
+        Shape::setHeight( exp(1)*(cos(M_PI/_numSides))/(sin(M_PI/_numSides)));
+        }
+        else if( _numSides % 2 == 0 && _numSides % 4 != 0 ){
+            
+            Shape::setHeight(exp(1)* (cos(M_PI/_numSides))/(sin(M_PI/_numSides)) );
+            }
+            
+      }
 };
 
 class Rectangle: public Shape{
+    
 };
 
 
@@ -76,13 +126,5 @@ class Square: public Shape{
 
 class Triangle: public Shape{
 };
-
-
-
-
-
-// A shapes-to-PostScript translator
-
-
 
 #endif /* cps_h */
