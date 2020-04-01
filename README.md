@@ -7,3 +7,13 @@ Needs a custom shape
 Needs a generate postscript handler.
 More tests are always good?!
 only 6 cases right now.
+
+# TODO
+Generate postscript for each shape now.
+
+# Needs
+Put shape in center.
+
+# Thoughts
+
+genPostScript needs to be 
