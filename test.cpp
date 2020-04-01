@@ -166,44 +166,44 @@ TEST_CASE("RotatedShape getHeight and getWidth")
 	SECTION("RotatedShape getHeight")
 	{
 		INFO("Rectangle(3, 4), rotated 90 degrees");
-		REQUIRE(makeRotatedShape(makeRectangle(3, 4), Angle::A90)->getHeight() == 3);
+		REQUIRE(makeRotatedShape(makeRectangle(3, 4), Angle::R90)->getHeight() == 3);
 
 		INFO("Rectangle(3, 4), rotated 270 degrees");
-		REQUIRE(makeRotatedShape(makeRectangle(3, 4), Angle::A270)->getHeight() == 3);
+		REQUIRE(makeRotatedShape(makeRectangle(3, 4), Angle::R270)->getHeight() == 3);
 
 		INFO("Rectangle(3, 4), rotated 180 degrees");
-		REQUIRE(makeRotatedShape(makeRectangle(3, 4), Angle::A180)->getHeight() == 4);
+		REQUIRE(makeRotatedShape(makeRectangle(3, 4), Angle::R180)->getHeight() == 4);
 
 		INFO("Circle(17), rotated 90 degrees");
-		REQUIRE(makeRotatedShape(makeCircle(17), Angle::A90)->getHeight() == 34);
+		REQUIRE(makeRotatedShape(makeCircle(17), Angle::R90)->getHeight() == 34);
 
 		INFO("Triangle(17, 34), rotated 270 degrees");
-		REQUIRE(makeRotatedShape(makeTriangle(17), Angle::A270)->getHeight() == 
+		REQUIRE(makeRotatedShape(makeTriangle(17), Angle::R270)->getHeight() == 
 			makeTriangle(17)->getWidth());
 
 		INFO("Rectangle(17, 34), rotated 180 degrees");
-		REQUIRE(makeRotatedShape(makeRectangle(17, 34), Angle::A180)->getHeight() == 34);
+		REQUIRE(makeRotatedShape(makeRectangle(17, 34), Angle::R180)->getHeight() == 34);
 	}
 
 	SECTION("RotatedShape getWidth")
 	{
 		INFO("Rectangle(3, 4), rotated 90 degrees");
-		REQUIRE(makeRotatedShape(makeRectangle(3, 4), Angle::A90)->getWidth() == 4);
+		REQUIRE(makeRotatedShape(makeRectangle(3, 4), Angle::R90)->getWidth() == 4);
 
 		INFO("Rectangle(3, 4), rotated 270 degrees");
-		REQUIRE(makeRotatedShape(makeRectangle(3, 4), Angle::A270)->getWidth() == 4);
+		REQUIRE(makeRotatedShape(makeRectangle(3, 4), Angle::R270)->getWidth() == 4);
 
 		INFO("Rectangle(3, 4), rotated 180 degrees");
-		REQUIRE(makeRotatedShape(makeRectangle(3, 4), Angle::A180)->getWidth() == 3);
+		REQUIRE(makeRotatedShape(makeRectangle(3, 4), Angle::R180)->getWidth() == 3);
 
 		INFO("Circle(17), rotated 90 degrees")
-			REQUIRE(makeRotatedShape(makeCircle(17), Angle::A90)->getWidth() == 34);
+			REQUIRE(makeRotatedShape(makeCircle(17), Angle::R90)->getWidth() == 34);
 
 		INFO("Triangle(17, 34), rotated 270 degrees");
-		REQUIRE(makeRotatedShape(makeTriangle(17), Angle::A270)->getWidth() == 
+		REQUIRE(makeRotatedShape(makeTriangle(17), Angle::R270)->getWidth() == 
 			makeTriangle(17)->getHeight());
 
 		INFO("Rectangle(17, 34), rotated 180 degrees");
-		REQUIRE(makeRotatedShape(makeRectangle(17, 34), Angle::A180)->getWidth() == 17);
+		REQUIRE(makeRotatedShape(makeRectangle(17, 34), Angle::R180)->getWidth() == 17);
 	}
 }

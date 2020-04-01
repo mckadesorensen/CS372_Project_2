@@ -13,7 +13,7 @@
 #include <math.h>
 
 //Enum for handling Angles.
-enum class Angle { A90, A180, A270 };
+enum class Angle { R90, R180, R270 };
 
 class Shape {
 public:
@@ -28,7 +28,7 @@ std::shared_ptr<Shape> makeCircle(double radius);
 std::shared_ptr<Shape> makeRectangle(double width, double height);
 std::shared_ptr<Shape> makePolygon(int numSides, double length);
 std::shared_ptr<Shape> makeTriangle(double length);
-std::shared_ptr<Shape> makeSquare(double length); //Its justs a rectanle with one param.
+std::shared_ptr<Shape> makeSquare(double length); 
 std::shared_ptr<Shape> makeSpacer(double width, double height); 
 
 //Fancy Shapes
