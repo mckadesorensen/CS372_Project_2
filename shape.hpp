@@ -4,7 +4,15 @@
 #define SHAPE_HPP
 
 #include <iostream>
+#include <memory>
+#include <initializer_list>
+#include <vector>
+#define _USE_MATH_DEFINES
+#include <cmath>
+#include <math.h>
 
+//Enum for handling Angles.
+enum class Angle { A90, A180, A270 };
 
 class Shape {
 public:
@@ -65,6 +73,17 @@ public:
 private:
     double _width;
     double _height;
+};
+
+class RotatedShape : public Shape {
+public:
+    RotatedShape(std::shared_ptr<Shape> s, Angle a);
+    double getHeight() const override;
+    double getWidth() const override;
+    void generatePostScript(std::ostream& os) const override;
+private:
+    std::shared_ptr<Shape> _s;
+    int _a;
 };
 
 #endif
