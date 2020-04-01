@@ -1,5 +1,5 @@
 //  Matt Perry, Tailon Russell, Chenyi Ling, McKade Sorensen
-
+// Based on Dr. Hartmans CPS2020 example
 #ifndef SHAPE_HPP
 #define SHAPE_HPP
 
