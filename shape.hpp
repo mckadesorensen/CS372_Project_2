@@ -46,4 +46,14 @@ private:
     double _length;
 };
 
+class Triangle : public Shape {
+public:
+    Triangle(double length);
+    double getHeight() const override;
+    double getWidth() const override;
+    void generatePostScript(std::ostream& os) const override;
+private:
+    double _length;
+};
+
 #endif
