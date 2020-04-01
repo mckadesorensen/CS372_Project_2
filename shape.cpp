@@ -73,7 +73,7 @@ double Circle::getWidth() const
 	return (2 * _radius);
 }
 
-void Circle::generatePostScript(std::ostream& os) const 
+void Circle::genPostScript(std::ostream& os) const 
 {
 }
 
@@ -103,7 +103,7 @@ double Polygon::getWidth() const
 	return 0.0;
 }
 
-void Polygon::generatePostScript(std::ostream& os) const
+void Polygon::genPostScript(std::ostream& os) const
 {
     //TODO Write me?!
 }
@@ -120,7 +120,7 @@ double Rectangle::getWidth() const
 	return _width;
 }
 
-void Rectangle::generatePostScript(std::ostream& os) const
+void Rectangle::genPostScript(std::ostream& os) const
 {
 }
 
@@ -136,7 +136,7 @@ double Spacer::getWidth() const
 	return _width;
 }
 
-void Spacer::generatePostScript(std::ostream& os) const
+void Spacer::genPostScript(std::ostream& os) const
 {
 }
 
@@ -152,7 +152,7 @@ double Triangle::getWidth() const
 	return Polygon(3, _length).getWidth();
 }
 
-void Triangle::generatePostScript(std::ostream& os) const
+void Triangle::genPostScript(std::ostream& os) const
 {
 }
 
@@ -192,7 +192,7 @@ double RotatedShape::getWidth() const
 	return 0.0;
 }
 
-void RotatedShape::generatePostScript(std::ostream& os) const
+void RotatedShape::genPostScript(std::ostream& os) const
 {
 }
 
@@ -208,7 +208,7 @@ double ScaledShape::getWidth() const
 	return (_s->getWidth() * _xscale);
 }
 
-void ScaledShape::generatePostScript(std::ostream& os) const
+void ScaledShape::genPostScript(std::ostream& os) const
 {
 }
 
@@ -228,7 +228,7 @@ double LayeredShape::getWidth() const
 	return 0.0;
 }
 
-void LayeredShape::generatePostScript(std::ostream& os) const
+void LayeredShape::genPostScript(std::ostream& os) const
 {
 }
 
@@ -248,7 +248,7 @@ double VerticalShape::getWidth() const
 	return 0.0;
 }
 
-void VerticalShape::generatePostScript(std::ostream& os) const
+void VerticalShape::genPostScript(std::ostream& os) const
 {
 }
 
@@ -268,6 +268,6 @@ double HorizontalShape::getWidth() const
 	return 0.0;
 }
 
-void HorizontalShape::generatePostScript(std::ostream& os) const
+void HorizontalShape::genPostScript(std::ostream& os) const
 {
 }

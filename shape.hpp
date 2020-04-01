@@ -33,7 +33,7 @@ public:
     virtual ~Shape() = default;
     virtual double getHeight() const = 0;
     virtual double getWidth() const = 0;
-    virtual void generatePostScript(std::ostream& os) const = 0;
+    virtual void genPostScript(std::ostream& os) const = 0;
 };
 
 class Circle : public Shape {
@@ -41,7 +41,7 @@ public:
     Circle(double radius);
     double getHeight() const override;
     double getWidth() const override;
-    void generatePostScript(std::ostream& os) const override;
+    void genPostScript(std::ostream& os) const override;
 private:
     double _radius;
 };
@@ -51,7 +51,7 @@ public:
     Rectangle(double width, double height);
     double getHeight() const override;
     double getWidth() const override;
-    void generatePostScript(std::ostream& os) const override;
+    void genPostScript(std::ostream& os) const override;
 private:
     double _width;
     double _height;
@@ -62,7 +62,7 @@ public:
     Polygon(int numSides, double length);
     double getHeight() const override;
     double getWidth() const override;
-    void generatePostScript(std::ostream& os) const override;
+    void genPostScript(std::ostream& os) const override;
 private:
     int _numSides;
     double _length;
@@ -73,7 +73,7 @@ public:
     Triangle(double length);
     double getHeight() const override;
     double getWidth() const override;
-    void generatePostScript(std::ostream& os) const override;
+    void genPostScript(std::ostream& os) const override;
 private:
     double _length;
 };
@@ -83,7 +83,7 @@ public:
     Spacer(double width, double height);
     double getHeight() const override;
     double getWidth() const override;
-    void generatePostScript(std::ostream& os) const override;
+    void genPostScript(std::ostream& os) const override;
 private:
     double _width;
     double _height;
@@ -94,7 +94,7 @@ public:
     RotatedShape(std::shared_ptr<Shape> s, Angle a);
     double getHeight() const override;
     double getWidth() const override;
-    void generatePostScript(std::ostream& os) const override;
+    void genPostScript(std::ostream& os) const override;
 private:
     std::shared_ptr<Shape> _s;
     int _a;
@@ -105,7 +105,7 @@ public:
     ScaledShape(std::shared_ptr<Shape> s, double xscale, double yscale);
     double getHeight() const override;
     double getWidth() const override;
-    void generatePostScript(std::ostream& os) const override;
+    void genPostScript(std::ostream& os) const override;
 private:
     std::shared_ptr<Shape> _s;
     double _xscale;
@@ -117,7 +117,7 @@ public:
     LayeredShape(std::initializer_list<std::shared_ptr<Shape>> i);
     double getHeight() const override;
     double getWidth() const override;
-    void generatePostScript(std::ostream& os) const override;
+    void genPostScript(std::ostream& os) const override;
 private:
     std::vector<std::shared_ptr<Shape>> _shapes;
 };
@@ -127,7 +127,7 @@ public:
     VerticalShape(std::initializer_list<std::shared_ptr<Shape>> i);
     double getHeight() const override;
     double getWidth() const override;
-    void generatePostScript(std::ostream& os) const override;
+    void genPostScript(std::ostream& os) const override;
 private:
     std::vector<std::shared_ptr<Shape>> _shapes;
 };
@@ -137,7 +137,7 @@ public:
     HorizontalShape(std::initializer_list<std::shared_ptr<Shape>> i);
     double getHeight() const override;
     double getWidth() const override;
-    void generatePostScript(std::ostream& os) const override;
+    void genPostScript(std::ostream& os) const override;
 private:
     std::vector<std::shared_ptr<Shape>> _shapes;
 };
