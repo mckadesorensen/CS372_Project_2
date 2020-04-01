@@ -56,4 +56,15 @@ private:
     double _length;
 };
 
+class Spacer : public Shape {
+public:
+    Spacer(double width, double height);
+    double getHeight() const override;
+    double getWidth() const override;
+    void generatePostScript(std::ostream& os) const override;
+private:
+    double _width;
+    double _height;
+};
+
 #endif
