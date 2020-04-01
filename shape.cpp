@@ -160,13 +160,13 @@ RotatedShape::RotatedShape(std::shared_ptr<Shape> s, Angle a)
 {
 	_s = s;
 	switch (a) {
-	case Angle::A90:
+	case Angle::R90:
 		_a = 90;
 		break;
-	case Angle::A180:
+	case Angle::R180:
 		_a = 180;
 		break;
-	case Angle::A270:
+	case Angle::R270:
 		_a = 270;
 		break;
 	}
