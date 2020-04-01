@@ -7,12 +7,22 @@
 #include <memory>
 #include <initializer_list>
 #include <vector>
+
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include <math.h>
 
 //Enum for handling Angles.
 enum class Angle { A90, A180, A270 };
+
+class Shape {
+public:
+    virtual ~Shape() = default;
+    virtual double getHeight() const = 0;
+    virtual double getWidth() const = 0;
+    virtual void genPostScript(std::ostream& os) const = 0;
+};
+
 //Basic Shapes
 std::shared_ptr<Shape> makeCircle(double radius);
 std::shared_ptr<Shape> makeRectangle(double width, double height);
@@ -28,13 +38,6 @@ std::shared_ptr<Shape> makeLayeredShape(std::initializer_list<std::shared_ptr<Sh
 std::shared_ptr<Shape> makeVerticalShape(std::initializer_list<std::shared_ptr<Shape>> i);
 std::shared_ptr<Shape> makeHorizontalShape(std::initializer_list<std::shared_ptr<Shape>> i);
 
-class Shape {
-public:
-    virtual ~Shape() = default;
-    virtual double getHeight() const = 0;
-    virtual double getWidth() const = 0;
-    virtual void genPostScript(std::ostream& os) const = 0;
-};
 
 class Circle : public Shape {
 public:
