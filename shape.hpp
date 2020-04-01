@@ -86,4 +86,46 @@ private:
     int _a;
 };
 
+class ScaledShape : public Shape {
+public:
+    ScaledShape(std::shared_ptr<Shape> s, double xscale, double yscale);
+    double getHeight() const override;
+    double getWidth() const override;
+    void generatePostScript(std::ostream& os) const override;
+private:
+    std::shared_ptr<Shape> _s;
+    double _xscale;
+    double _yscale;
+};
+
+class LayeredShape : public Shape {
+public:
+    LayeredShape(std::initializer_list<std::shared_ptr<Shape>> i);
+    double getHeight() const override;
+    double getWidth() const override;
+    void generatePostScript(std::ostream& os) const override;
+private:
+    std::vector<std::shared_ptr<Shape>> _shapes;
+};
+
+class VerticalShape : public Shape {
+public:
+    VerticalShape(std::initializer_list<std::shared_ptr<Shape>> i);
+    double getHeight() const override;
+    double getWidth() const override;
+    void generatePostScript(std::ostream& os) const override;
+private:
+    std::vector<std::shared_ptr<Shape>> _shapes;
+};
+
+class HorizontalShape : public Shape {
+public:
+    HorizontalShape(std::initializer_list<std::shared_ptr<Shape>> i);
+    double getHeight() const override;
+    double getWidth() const override;
+    void generatePostScript(std::ostream& os) const override;
+private:
+    std::vector<std::shared_ptr<Shape>> _shapes;
+};
+
 #endif
