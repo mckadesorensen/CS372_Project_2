@@ -35,4 +35,15 @@ private:
     double _height;
 };
 
+class Polygon : public Shape {
+public:
+    Polygon(int numSides, double length);
+    double getHeight() const override;
+    double getWidth() const override;
+    void generatePostScript(std::ostream& os) const override;
+private:
+    int _numSides;
+    double _length;
+};
+
 #endif
