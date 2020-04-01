@@ -31,7 +31,7 @@ std::shared_ptr<Shape> makeTriangle(double length);
 std::shared_ptr<Shape> makeSquare(double length); //Its justs a rectanle with one param.
 std::shared_ptr<Shape> makeSpacer(double width, double height); 
 
-// Rotated Shapes
+//Fancy Shapes
 std::shared_ptr<Shape> makeRotatedShape(std::shared_ptr<Shape> s, Angle a);
 std::shared_ptr<Shape> makeScaledShape(std::shared_ptr<Shape> s, double sx, double sy);
 std::shared_ptr<Shape> makeLayeredShape(std::initializer_list<std::shared_ptr<Shape>> i);
