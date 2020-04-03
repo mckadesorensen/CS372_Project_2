@@ -126,7 +126,8 @@ double Rectangle::getWidth() const
 
 void Rectangle::genPostScript(std::ostream& os) const
 {
-	os << "newpath\n0 0 moveto\n";
+	os << "newpath\n";
+	os << "0 0 moveto\n";
 	os << getWidth() << " 0 rlineto\n";
 	os << "0 " << getHeight() << " rlineto\n";
 	os << "-" << getWidth() << " 0  rlineto\n";
