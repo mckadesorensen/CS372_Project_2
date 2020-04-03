@@ -81,6 +81,8 @@ double Custom::getWidth() const
 
 void Custom::genPostScript(std::ostream& os) const 
 {
+	os << "newpath\n";
+	os << "-" << getHeight()/2 << " -" << getWidth()/2 << " rmoveto\n";
 	os << "4 5 "<< _fRadius << " 0 360 arc closepath\n";
 	os << "4 5 " << _mRadius << " 210 330 arc closepath\n";
 	os << "3 6 " << _eRadius << " 0 360 arc closepath\n";
@@ -102,7 +104,9 @@ double Circle::getWidth() const
 void Circle::genPostScript(std::ostream& os) const 
 {
 	os << "newpath\n";
-	os << "0 0 " << _radius << "0 360 arc closepath \n";
+	os << "-" << getHeight()/2 << " -" << getWidth()/2 << " rmoveto\n";
+	os << "0 0 " << _radius << "0 360 arc\n";
+	os << "stroke\n";
 }
 
 Polygon::Polygon(int numSides, double length): _numSides(numSides), _length(length){}
@@ -153,11 +157,12 @@ double Rectangle::getWidth() const
 void Rectangle::genPostScript(std::ostream& os) const
 {
 	os << "newpath\n";
-	os << "0 0 moveto\n";
+	os << "-" << getHeight()/2 << " -" << getWidth()/2 << " rmoveto\n";
 	os << getWidth() << " 0 rlineto\n";
 	os << "0 " << getHeight() << " rlineto\n";
 	os << "-" << getWidth() << " 0  rlineto\n";
 	os << "closepath\n";
+	os << "stroke\n";
 }
 
 
@@ -179,7 +184,7 @@ void Spacer::genPostScript(std::ostream& os) const
 {
 	os << "1 setgray\n";
 	os << "newpath\n";
-	os << "0 0 moveto\n";
+	os << "-" << getHeight()/2 << " -" << getWidth()/2 << " rmoveto\n";
 	os << getWidth() << " 0 rlineto\n";
 	os << "0 " << getHeight() << " rlineto\n";
 	os << "-" << getWidth() << " 0  rlineto\n";
@@ -202,7 +207,7 @@ double Triangle::getWidth() const
 void Triangle::genPostScript(std::ostream& os) const
 {
 	os << "newpath\n";
-	os << "0 0 moveto\n";
+	os << "-" << getHeight()/2 << " -" << getWidth()/2 << " rmoveto\n";
 	os << getWidth() <<" 0" << " rlineto\n";
 	os << "0 " << getHeight() << " rlineto\n";
 	
