@@ -222,7 +222,10 @@ double RotatedShape::getWidth() const
 
 void RotatedShape::genPostScript(std::ostream& os) const
 {
-
+	os << "gsave\n";
+	os << _a << " rotate \n";
+	_s->genPostScript(os);
+	os << "grestore\n";
 }
 
 
