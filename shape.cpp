@@ -75,6 +75,8 @@ double Circle::getWidth() const
 
 void Circle::genPostScript(std::ostream& os) const 
 {
+	os << _xscale << " " << _yscale << " " << _radius << " " << 0 << " " << 360 << " " << "arc closepath";
+    	os << "stroke";
 }
 
 Polygon::Polygon(int numSides, double length): _numSides(numSides), _length(length){}
