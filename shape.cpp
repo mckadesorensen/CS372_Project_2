@@ -81,7 +81,10 @@ double Custom::getWidth() const
 
 void Custom::genPostScript(std::ostream& os) const 
 {
-	
+	os << "4 5 "<< _fRadius << " 0 360 arc closepath\n";
+	os << "4 5 " << _mRadius << " 210 330 arc closepath\n";
+	os << "3 6 " << _eRadius << " 0 360 arc closepath\n";
+	os << "5 6 " << _eRadius << " 0 360 arc closepath\n";
 }
 
 Circle::Circle(double radius): _radius(radius){}
