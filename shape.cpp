@@ -151,12 +151,11 @@ void Spacer::genPostScript(std::ostream& os) const
 {
 	os << "1 setgray\n";
 	os << "newpath\n";
-	os << "1 inch  1 inch moveto\n";
-	os << getWidth() << " inch 1 inch moveto\n";
-	os << getWidth() << " inch " << getHeight() << " inch moveto\n";
-	os << "1 inch " << getHeight() << " inch moveto\n";
+	os << "moveto";
+	os << getWidth() << " 0 rlineto\n";
+	os << "0 " << getHeight() << " rlineto\n";
+	os << "-" << getWidth() << " 0  rlineto\n";
 	os << "closepath\n";
-	os << "stroke\n";
 }
 
 
