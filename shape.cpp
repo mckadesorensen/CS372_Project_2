@@ -124,12 +124,13 @@ double Rectangle::getWidth() const
 
 void Rectangle::genPostScript(std::ostream& os) const
 {
+	os << "/rectangle { \n";
 	os << "newpath\n";
-	os << "moveto";
+	os << "moveto\n";
 	os << getWidth() << " 0 rlineto\n";
 	os << "0 " << getHeight() << " rlineto\n";
 	os << "-" << getWidth() << " 0  rlineto\n";
-	os << "closepath\n";
+		os << "closepath\n } def";
 }
 
 
@@ -149,13 +150,14 @@ double Spacer::getWidth() const
 
 void Spacer::genPostScript(std::ostream& os) const
 {
+	os << "/spacer { \n";
 	os << "1 setgray\n";
 	os << "newpath\n";
-	os << "moveto";
+	os << "moveto\n";
 	os << getWidth() << " 0 rlineto\n";
 	os << "0 " << getHeight() << " rlineto\n";
 	os << "-" << getWidth() << " 0  rlineto\n";
-	os << "closepath\n";
+	os << "closepath\n } def";
 }
 
 
@@ -174,15 +176,13 @@ double Triangle::getWidth() const
 
 void Triangle::genPostScript(std::ostream& os) const
 {
-	os << "/inch {72 mul} def\n";
+	os << "/triangle { \n";
 	os << "newpath\n";
-	os << "1 inch " << getWidth() << " inch moveto\n";
-	os << getWidth() << " inch 1 inch moveto\n";
-	os << getWidth() << " inch " << getHeight() << " inch moveto\n";
-	os << "1 inch " << getHeight() << " inch moveto\n";
-	os << "closepath\n";
-	os << "stroke\n";
-	os << "showpage\n";
+	os << "moveto\n";
+	os << getWidth() <<" 0" << " rlineto\n";
+	os << "0 " << getHeight() << " rlineto\n";
+	os << "closepath\n } def";
+	
 }
 
 
