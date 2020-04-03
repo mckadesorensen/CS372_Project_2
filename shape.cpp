@@ -128,7 +128,7 @@ void Rectangle::genPostScript(std::ostream& os) const
 	os << "1 inch  1 inch moveto\n";
 	os << getWidth() << " inch 1 inch moveto\n";
 	os << getWidth() << " inch " << getHeight() << " inch moveto\n";
-	os << "1 inch " << getHeight() << " inch moveto\n";
+	os << getHeight() << " inch moveto\n";
 	os << "closepath\n";
 	os << "stroke\n";
 }
