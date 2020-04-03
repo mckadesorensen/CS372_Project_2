@@ -109,7 +109,9 @@ double Polygon::getWidth() const
 
 void Polygon::genPostScript(std::ostream& os) const
 {
-    
+    os << "/polygon { \n";
+	os << 
+	os << "} def\n";
 }
 
 
@@ -297,10 +299,16 @@ double VerticalShape::getWidth() const
 
 void VerticalShape::genPostScript(std::ostream& os) const
 {
+	os << "/verticalShape {\n";
 	for (size_t i = 0; i < _shapes.size(); i++)
-	{
+	{	
+		os << "gsave\n";
 		_shapes[i]->genPostScript(os);
+		os << "grestore\n";
+		os  << "0 " << _shapes[i]->getHeight() << " translate";
+
 	}
+	os << "} /def \n";
 }
 
 
