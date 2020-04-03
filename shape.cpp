@@ -11,6 +11,11 @@ std::shared_ptr<Shape> makeCircle(double radius)
 	return std::make_shared<Circle>(radius);
 }
 
+std::shared_ptr<Shape> makeCustom(double faceRadius, double eyesRadius, double mouthRadius)
+{
+	return std::make_shared<Custom>(faceRadius, eyesRadius, mouthRadius);
+}
+
 std::shared_ptr<Shape> makePolygon(int numSides, double length)
 {
 	return std::make_shared<Polygon>(numSides, length);
@@ -59,6 +64,24 @@ std::shared_ptr<Shape> makeVerticalShape(std::initializer_list<std::shared_ptr<S
 std::shared_ptr<Shape> makeHorizontalShape(std::initializer_list<std::shared_ptr<Shape>> i)
 {
 	return std::make_shared<HorizontalShape>(i);
+}
+
+Custom::Custom(double faceRadius, double eyeRadius, double mouthRadius): _fRadius(faceRadius),
+	 _eRadius(eyeRadius), _mRadius(mouthRadius){}
+
+double Custom::getHeight() const
+{
+	return (2 * _fRadius);
+}
+
+double Custom::getWidth() const
+{
+	return (2 * _fRadius);
+}
+
+void Custom::genPostScript(std::ostream& os) const 
+{
+	
 }
 
 Circle::Circle(double radius): _radius(radius){}
