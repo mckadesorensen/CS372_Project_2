@@ -102,12 +102,12 @@ double Polygon::getWidth() const
 
 	return 0.0;
 }
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 void Polygon::genPostScript(std::ostream& os) const
 {
     
 }
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 
 Rectangle::Rectangle(double width, double height): _width(width), _height(height){}
 
@@ -121,7 +121,7 @@ double Rectangle::getWidth() const
 	return _width;
 }
 
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 void Rectangle::genPostScript(std::ostream& os) const
 {
 	os << "/inch {72 mul} def\n";
@@ -134,7 +134,7 @@ void Rectangle::genPostScript(std::ostream& os) const
 	os << "stroke\n";
 	os << "showpage\n";
 }
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 
 
 Spacer::Spacer(double width, double height): _width(width), _height(height){}
@@ -149,7 +149,7 @@ double Spacer::getWidth() const
 	return _width;
 }
 
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 void Spacer::genPostScript(std::ostream& os) const
 {
 	os << "/inch {72 mul} def\n";
@@ -163,7 +163,7 @@ void Spacer::genPostScript(std::ostream& os) const
 	os << "stroke\n";
 	os << "showpage\n";
 }
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 
 Triangle::Triangle(double length): _length(length){}
 
@@ -177,7 +177,7 @@ double Triangle::getWidth() const
 	return Polygon(3, _length).getWidth();
 }
 
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 void Triangle::genPostScript(std::ostream& os) const
 {
 	os << "/inch {72 mul} def\n";
@@ -190,7 +190,7 @@ void Triangle::genPostScript(std::ostream& os) const
 	os << "stroke\n";
 	os << "showpage\n";
 }
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 
 RotatedShape::RotatedShape(std::shared_ptr<Shape> s, Angle a)
 {
@@ -228,12 +228,12 @@ double RotatedShape::getWidth() const
 	return 0.0;
 }
 
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 void RotatedShape::genPostScript(std::ostream& os) const
 {
 
 }
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 
 ScaledShape::ScaledShape(std::shared_ptr<Shape> s, double xscale, double yscale): _s(s), _xscale(xscale), _yscale(yscale){}
 
@@ -247,12 +247,12 @@ double ScaledShape::getWidth() const
 	return (_s->getWidth() * _xscale);
 }
 
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 void ScaledShape::genPostScript(std::ostream& os) const
 {
 	_s->genPostScript(os);
 }
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 
 LayeredShape::LayeredShape(initializer_list<shared_ptr<Shape>> i)
 {
@@ -270,7 +270,7 @@ double LayeredShape::getWidth() const
 	return 0.0;
 }
 
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 void LayeredShape::genPostScript(std::ostream& os) const
 {
 	for (size_t i = 0; i < _shapes.size(); i++)
@@ -278,7 +278,7 @@ void LayeredShape::genPostScript(std::ostream& os) const
 		_shapes[i]->genPostScript(os);
 	}
 }
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 
 VerticalShape::VerticalShape(initializer_list<shared_ptr<Shape>> i)
 {
@@ -296,7 +296,7 @@ double VerticalShape::getWidth() const
 	return 0.0;
 }
 
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 void VerticalShape::genPostScript(std::ostream& os) const
 {
 	for (size_t i = 0; i < _shapes.size(); i++)
@@ -304,7 +304,7 @@ void VerticalShape::genPostScript(std::ostream& os) const
 		_shapes[i]->genPostScript(os);
 	}
 }
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 
 HorizontalShape::HorizontalShape(initializer_list<shared_ptr<Shape>> i)
 {
@@ -322,7 +322,7 @@ double HorizontalShape::getWidth() const
 	return 0.0;
 }
 
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
 void HorizontalShape::genPostScript(std::ostream& os) const
 {
 	for (size_t i = 0; i < _shapes.size(); i++)
@@ -330,4 +330,4 @@ void HorizontalShape::genPostScript(std::ostream& os) const
 		_shapes[i]->genPostScript(os);
 	}
 }
-/////////////////////Start of Tailon's edit/////////////////////////////////////////////////////
+
