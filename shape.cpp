@@ -188,6 +188,7 @@ void Spacer::genPostScript(std::ostream& os) const
 	os << getWidth() << " 0 rlineto\n";
 	os << "0 " << getHeight() << " rlineto\n";
 	os << "-" << getWidth() << " 0  rlineto\n";
+	os << "stroke\n";
 }
 
 
@@ -210,6 +211,7 @@ void Triangle::genPostScript(std::ostream& os) const
 	os << "-" << getHeight()/2 << " -" << getWidth()/2 << " rmoveto\n";
 	os << getWidth() <<" 0" << " rlineto\n";
 	os << "0 " << getHeight() << " rlineto\n";
+	os << "stroke\n";
 	
 }
 
