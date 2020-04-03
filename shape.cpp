@@ -124,7 +124,6 @@ double Rectangle::getWidth() const
 
 void Rectangle::genPostScript(std::ostream& os) const
 {
-	os << "/inch {72 mul} def\n";
 	os << "newpath\n";
 	os << "1 inch  1 inch moveto\n";
 	os << getWidth() << " inch 1 inch moveto\n";
@@ -132,7 +131,6 @@ void Rectangle::genPostScript(std::ostream& os) const
 	os << "1 inch " << getHeight() << " inch moveto\n";
 	os << "closepath\n";
 	os << "stroke\n";
-	os << "showpage\n";
 }
 
 
