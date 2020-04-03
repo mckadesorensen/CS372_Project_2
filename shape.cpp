@@ -75,10 +75,8 @@ double Circle::getWidth() const
 
 void Circle::genPostScript(std::ostream& os) const 
 {
-	os << "/circle { \n";
 	os << "newpath\n";
 	os << "0 0 " << _radius << "0 360 arc closepath \n";
-	os << "} def\n";
 }
 
 Polygon::Polygon(int numSides, double length): _numSides(numSides), _length(length){}
@@ -109,9 +107,7 @@ double Polygon::getWidth() const
 
 void Polygon::genPostScript(std::ostream& os) const
 {
-    os << "/polygon { \n";
-	os << 
-	os << "} def\n";
+
 }
 
 
@@ -130,13 +126,11 @@ double Rectangle::getWidth() const
 
 void Rectangle::genPostScript(std::ostream& os) const
 {
-	os << "/rectangle { \n";
-	os << "newpath\n";
-	os << "moveto\n";
+	os << "newpath\n0 0 moveto\n";
 	os << getWidth() << " 0 rlineto\n";
 	os << "0 " << getHeight() << " rlineto\n";
 	os << "-" << getWidth() << " 0  rlineto\n";
-	os << "closepath\n } def\n";
+	os << "closepath\n";
 }
 
 
@@ -156,14 +150,12 @@ double Spacer::getWidth() const
 
 void Spacer::genPostScript(std::ostream& os) const
 {
-	os << "/spacer { \n";
 	os << "1 setgray\n";
 	os << "newpath\n";
-	os << "moveto\n";
+	os << "0 0 moveto\n";
 	os << getWidth() << " 0 rlineto\n";
 	os << "0 " << getHeight() << " rlineto\n";
 	os << "-" << getWidth() << " 0  rlineto\n";
-	os << "closepath\n } def\n";
 }
 
 
@@ -182,12 +174,10 @@ double Triangle::getWidth() const
 
 void Triangle::genPostScript(std::ostream& os) const
 {
-	os << "/triangle { \n";
 	os << "newpath\n";
-	os << "moveto\n";
+	os << "0 0 moveto\n";
 	os << getWidth() <<" 0" << " rlineto\n";
 	os << "0 " << getHeight() << " rlineto\n";
-	os << "closepath\n } def\n";
 	
 }
 
@@ -250,6 +240,7 @@ double ScaledShape::getWidth() const
 
 void ScaledShape::genPostScript(std::ostream& os) const
 {
+	os << _xscale << " " << _yscale <<" scale\n"; 
 	_s->genPostScript(os);
 }
 
@@ -275,7 +266,9 @@ void LayeredShape::genPostScript(std::ostream& os) const
 {
 	for (size_t i = 0; i < _shapes.size(); i++)
 	{
+		os << "gsave\n";
 		_shapes[i]->genPostScript(os);
+		os << "grestore\n";
 	}
 }
 
@@ -299,16 +292,13 @@ double VerticalShape::getWidth() const
 
 void VerticalShape::genPostScript(std::ostream& os) const
 {
-	os << "/verticalShape {\n";
 	for (size_t i = 0; i < _shapes.size(); i++)
 	{	
 		os << "gsave\n";
 		_shapes[i]->genPostScript(os);
 		os << "grestore\n";
-		os  << "0 " << _shapes[i]->getHeight() << " translate";
-
+		os  << "0 " << _shapes[i]->getHeight() << " translate\n";
 	}
-	os << "} /def \n";
 }
 
 
@@ -333,7 +323,10 @@ void HorizontalShape::genPostScript(std::ostream& os) const
 {
 	for (size_t i = 0; i < _shapes.size(); i++)
 	{
+		os << "gsave\n";
 		_shapes[i]->genPostScript(os);
+		os << "grestore\n";
+		os << _shapes[i]->getWidth() <<" 0 translate\n";
 	}
 }
 
