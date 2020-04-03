@@ -206,4 +206,32 @@ TEST_CASE("RotatedShape getHeight and getWidth")
 		INFO("Rectangle(17, 34), rotated 180 degrees");
 		REQUIRE(makeRotatedShape(makeRectangle(17, 34), Angle::R180)->getWidth() == 17);
 	}
+	
+}
+
+TEST_CASE("getHeight and getWidth functions Custom Shape")
+{
+	SECTION("Custom getHeight")
+	{
+		INFO("Radius 7 -> Width 14");
+		REQUIRE(makeCustom(8,2,4)->getHeight() == 16);
+
+		INFO("Radius 12 -> Width 24");
+		REQUIRE(makeCustom(15,2,5)->getHeight() == 30);
+
+		INFO("Radius 250 -> Width 500");
+		REQUIRE(makeCustom(152,15,75)->getHeight() == 304);
+	}
+
+	SECTION("Custom getWidth")
+	{
+		INFO("Radius 7 -> Width 14");
+		REQUIRE(makeCustom(7,2,4)->getWidth() == 14);
+
+		INFO("Radius 12 -> Width 24");
+		REQUIRE(makeCustom(12,4,4)->getWidth() == 24);
+
+		INFO("Radius 250 -> Width 500");
+		REQUIRE(makeCustom(250,15,125)->getWidth() == 500);
+	}
 }

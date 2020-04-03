@@ -37,6 +37,19 @@ std::shared_ptr<Shape> makeScaledShape(std::shared_ptr<Shape> s, double sx, doub
 std::shared_ptr<Shape> makeLayeredShape(std::initializer_list<std::shared_ptr<Shape>> i);
 std::shared_ptr<Shape> makeVerticalShape(std::initializer_list<std::shared_ptr<Shape>> i);
 std::shared_ptr<Shape> makeHorizontalShape(std::initializer_list<std::shared_ptr<Shape>> i);
+std::shared_ptr<Shape> makeCustom(double faceRadius, double eyesRadius, double mouthRadius);
+
+class Custom : public Shape {
+public:
+    Custom(double faceRadius, double eyesRadius, double mouthRadius);
+    double getHeight() const override;
+    double getWidth() const override;
+    void genPostScript(std::ostream& os) const override;
+private:
+    double _fRadius;
+    double _eRadius;
+    double _mRadius;
+};
 
 
 class Circle : public Shape {
