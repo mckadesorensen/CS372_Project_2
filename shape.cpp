@@ -125,10 +125,10 @@ double Rectangle::getWidth() const
 void Rectangle::genPostScript(std::ostream& os) const
 {
 	os << "newpath\n";
-	os << "1 inch  1 inch moveto\n";
-	os << getWidth() << " inch 1 inch moveto\n";
-	os << getWidth() << " inch " << getHeight() << " inch moveto\n";
-	os << "1 inch " << getHeight() << " inch moveto\n";
+	os << "moveto";
+	os << getWidth() << " inch 0 inch rlineto\n";
+	os << getWidth() << " inch " << getHeight() << " inch rlineto\n";
+	os << "0 inch " << getHeight() << " inch rlineto\n";
 	os << "closepath\n";
 	os << "stroke\n";
 }
@@ -150,7 +150,6 @@ double Spacer::getWidth() const
 
 void Spacer::genPostScript(std::ostream& os) const
 {
-	os << "/inch {72 mul} def\n";
 	os << "1 setgray\n";
 	os << "newpath\n";
 	os << "1 inch  1 inch moveto\n";
@@ -159,7 +158,6 @@ void Spacer::genPostScript(std::ostream& os) const
 	os << "1 inch " << getHeight() << " inch moveto\n";
 	os << "closepath\n";
 	os << "stroke\n";
-	os << "showpage\n";
 }
 
 
