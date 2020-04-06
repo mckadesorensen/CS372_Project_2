@@ -15,5 +15,22 @@ int main(int argc, char* argv[]) {
         catchresult = testing.run();
         std::cout << "End of automated tests.\n"; 
     }
+
+    auto myShape = makeCircle(5.0);
+    std::cout << "306 396 translate\n";
+    std::cout << "gsave\n";
+    myShape->genPostScript(std::cout);
+    std::cout << "grestore\n";
+    std::cout << "showpage\n";
+    std::cout << "\n";
+    auto myPoly = makePolygon(5,10);
+
+    std::cout << "306 396 translate\n";
+    std::cout << "gsave\n";
+    myPoly->genPostScript(std::cout);
+    std::cout << "grestore\n";
+    std::cout << "showpage\n";
+    std::cout << "\n";
+
     return 0;
 }

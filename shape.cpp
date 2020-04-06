@@ -102,8 +102,7 @@ double Circle::getWidth() const
 void Circle::genPostScript(std::ostream& os) const 
 {
 	os << "newpath\n";
-	os << "-" << getHeight()/2 << " -" << getWidth()/2 << " moveto\n";
-	os << "0 0 " << _radius << "0 360 arc\n";
+	os << "-" << getHeight()/2 << " -" << getWidth()/2 << " 0 360 arc\n";
 	os << "stroke\n";
 }
 
@@ -138,7 +137,7 @@ void Polygon::genPostScript(std::ostream& os) const
 	double angle = 360/_numSides;
 	os << "newpath\n";
 	os << "-" << getHeight()/2 << " " << getWidth()/2 << " moveto\n";
-	for (int i = 1; i < _numSides-1; i++ )
+	for (int i = 1; i < _numSides; i++ )
 	{
 		os << angle << " rotate\n";
 		os << _length << " 0 rlineto\n";
