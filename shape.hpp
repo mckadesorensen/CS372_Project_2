@@ -12,6 +12,7 @@
 #include <cmath>
 #include <math.h>
 
+
 //Enum for handling Angles.
 enum class Angle { R90, R180, R270 };
 
@@ -22,6 +23,9 @@ public:
     virtual double getWidth() const = 0;
     virtual void genPostScript(std::ostream& os) const = 0;
 };
+
+//helper function for printing post script definition in shape.cpp
+void printPostScript(std::ostream & os, const std::shared_ptr<Shape> & shape);
 
 //Basic Shapes
 std::shared_ptr<Shape> makeCircle(double radius);
