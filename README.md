@@ -12,3 +12,8 @@ Stacked Shapes
 Layered Shapes
 Horizonal Shapes
 One Custom Shape that is a face.
+# Notes
+This module was created for a school project, There is a test suite to ensure the CPS is generating the right sized squares.
+There is not a way to ensure post script is legal. 
+If you would like to add a new custom shape then open a PR.
+
