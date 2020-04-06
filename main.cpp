@@ -24,8 +24,9 @@ int main(int argc, char* argv[]) {
     auto myRotatedCustom = makeRotatedShape(myCustom, Angle::R90);
     auto myShapeList = {myCircle,myRectangle,myPolygon};
     auto myLayeredShapes = makeLayeredShape(myShapeList);
+    auto myTriangle = makeTriangle(100);
 
-
+    printPostScript(std::cout, myTriangle);
     printPostScript(std::cout, myCircle);
     printPostScript(std::cout, myCustom);
     printPostScript(std::cout, myRectangle);
