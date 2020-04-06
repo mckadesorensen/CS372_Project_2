@@ -6,6 +6,7 @@
 #define CATCH_CONFIG_FAST_COMPILE
 #include "catch.hpp"
 
+
 int main(int argc, char* argv[]) {
     Catch::Session testing;
     int catchresult;
@@ -16,21 +17,20 @@ int main(int argc, char* argv[]) {
         std::cout << "End of automated tests.\n"; 
     }
 
-    auto myShape = makeCircle(5.0);
-    std::cout << "306 396 translate\n";
-    std::cout << "gsave\n";
-    myShape->genPostScript(std::cout);
-    std::cout << "grestore\n";
-    std::cout << "showpage\n";
-    std::cout << "\n";
-    auto myPoly = makePolygon(5,10);
+    auto myCircle = makeCircle(50);
+    auto myCustom = makeCustom(50,10,20);
+    auto myRectangle = makeRectangle(40,60);
+    auto myPolygon = makePolygon(5,50);
+    auto myRotatedCustom = makeRotatedShape(myCustom, Angle::R90);
+    auto myShapeList = {myCircle,myRectangle,myPolygon};
+    auto myLayeredShapes = makeLayeredShape(myShapeList);
 
-    std::cout << "306 396 translate\n";
-    std::cout << "gsave\n";
-    myPoly->genPostScript(std::cout);
-    std::cout << "grestore\n";
-    std::cout << "showpage\n";
-    std::cout << "\n";
 
+    printPostScript(std::cout, myCircle);
+    printPostScript(std::cout, myCustom);
+    printPostScript(std::cout, myRectangle);
+    printPostScript(std::cout, myPolygon);
+    printPostScript(std::cout, myRotatedCustom);
+    printPostScript(std::cout, myLayeredShapes);
     return 0;
 }
